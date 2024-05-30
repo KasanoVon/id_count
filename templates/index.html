@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>取得情報入力</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+</head>
+<body>
+    <div id="app">
+        <input type="text" id="filter" placeholder="フィルター">
+        <select id="dropdown">
+            <option value="">板を選択</option>
+            {% for text, href in links %}
+                <option value="{{ text }}">{{ text }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="radio" id="recent" name="dateRange" value="15" checked> 直近15日
+        <input type="radio" id="older" name="dateRange" value="-15"> 直近15日以前
+
+        <select id="dateDropdown">
+            <option value="">日付を選択</option>
+        </select>
+
+        <label for="id">ID:</label>
+        <input type="text" id="id" disabled>
+
+        <label for="keyword">トリップ:</label>
+        <input type="text" id="keyword">
+
+        <button id="executeButton">実行</button>
+
+        <div id="result"></div>
+    </div>
+</body>
+</html>
